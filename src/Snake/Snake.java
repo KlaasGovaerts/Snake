@@ -1,29 +1,42 @@
 package Snake;
 
 
-public class Snake {
+public class Snake{
+private LinkedList<BodyPart> bodypartlist=new LinkedList<BodyPart>();
+private Maze maze;
 
-	public static void main(String[] args) {
-		LinkedList<BodyPart> snake=new LinkedList<BodyPart>();
-		BodyPart start=new BodyPart(5,5);
-		snake.prepend(start);
-		Snake.draw(snake);
+	public Snake(Maze maze){
+		this.maze=maze;
+		BodyPart start=new BodyPart(9,5);
+		bodypartlist.prepend(start);
+	}
+	
+	public void up(){
+		BodyPart[] bodypartarray = bodypartlist.getElements(BodyPart[].class);
+		int size=bodypartarray.length;
+		for(int i=size-1;i>=1;i--){
+			bodypartarray[i].setCoords(bodypartarray[i-1].getCoords());
 		}
-
-
-	public static void draw(LinkedList<BodyPart> snake){
-		int rijen=10;
-		int kolommen=10;
-		int[][] spelbord=new int[rijen][kolommen];
-		BodyPart[] bodyparts = snake.getElements(BodyPart[].class);
-		for(BodyPart p:bodyparts){
-			spelbord[p.getX()][p.getY()]=1;
-		}
-		for(int i=0;i<rijen;i++){
-			for(int j=0;j<kolommen;j++){
-				System.out.print(spelbord[i][j]);
-			}
-			System.out.println("");
-		}
+		BodyPart first=bodypartlist.first();
+		first.setX(first.getX()-1);
+		maze.draw();
+	}
+	
+	public void move(){
+		
+	}
+	
+	public LinkedList<BodyPart> getbodypartlist(){
+		return bodypartlist;
+	}
+	
+	public void generateFood(){
+		
 	}
 }
+
+/*
+Sources used:
+http://stackoverflow.com/questions/4522090/how-can-i-detect-arrow-keys-in-java
+
+*/

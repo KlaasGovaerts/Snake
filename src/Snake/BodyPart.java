@@ -17,11 +17,21 @@ public class BodyPart{
 		return y;
 	}
 	
+	public int[] getCoords(){
+		int[] coords={x,y};
+		return coords;
+	}
+	
 	public void setX(int x){
 		this.x=x;
 	}
 	
 	public void setY(int y){
 		this.y=y;
+	}
+	
+	public void setCoords(int[] coords){
+		x=coords[0];
+		y=coords[1];
 	}
 }

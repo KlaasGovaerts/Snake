@@ -65,6 +65,12 @@ public LinkedList(){
 		size++;
 	}
 	
+	public void append(T element){
+		Node newNode = new Node(element, null);
+		Node last=lastRecursive(head);
+		last.setNext(newNode);
+	}
+	
 	/**
 	 * 
 	 * @return the head of the list
@@ -156,6 +162,10 @@ public LinkedList(){
 		
 		public Node next(){
 			return next;
+		}
+		
+		public void setNext(Node next){
+			this.next=next;
 		}
 	}
 }
