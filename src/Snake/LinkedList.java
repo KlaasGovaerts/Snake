@@ -69,6 +69,7 @@ public LinkedList(){
 		Node newNode = new Node(element, null);
 		Node last=lastRecursive(head);
 		last.setNext(newNode);
+		size++;
 	}
 	
 	/**

@@ -6,7 +6,14 @@ public class Application {
 		Maze maze=new Maze();
 		Snake snake=new Snake(maze);
 		maze.addSnake(snake);
+		//maze.generateFood();
 		maze.draw();
-		//snake.up();
+		snake.up();
+		snake.up();
+		snake.up();
+		snake.up();
+		snake.up();
+		snake.up();
+		snake.up();
 	}
 }
