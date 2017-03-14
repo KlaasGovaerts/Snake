@@ -15,5 +15,6 @@ public class Application {
 		snake.up();
 		snake.up();
 		snake.up();
+		snake.up();
 	}
 }

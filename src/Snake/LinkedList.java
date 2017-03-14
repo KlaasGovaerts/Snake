@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 
 /**
  * 
- * @author Klaas Govaerts
+ * @author Piet Cordemans & Klaas Govaerts
  * 
  * Singly linked list
  *
@@ -42,6 +42,7 @@ public LinkedList(){
 	/**
 	 * 
 	 * @return Array of all the elements
+	 * @author Klaas Govaerts
 	 */
 	public <T> T[] getElements(Class<T[]> classType){
 		T[] elements = classType.cast(Array.newInstance(classType.getComponentType(), size));
@@ -65,6 +66,11 @@ public LinkedList(){
 		size++;
 	}
 	
+	/**
+	 * Appends the element to the linked list
+	 * @author Klaas Govaerts
+	 * @param element
+	 */
 	public void append(T element){
 		Node newNode = new Node(element, null);
 		Node last=lastRecursive(head);

@@ -2,7 +2,12 @@ package Snake;
 import java.util.Arrays;
 import java.lang.Math;
 //Math wordt geimporteerd wegens random
-
+/**
+ * Describes the map of the game (currently there are only walls).
+ * @author Klaas Govaerts
+ *
+ * 
+ */
 public class Maze {
 	private char[][] mazeMatrix;
 	private Snake snake;
@@ -11,6 +16,9 @@ public class Maze {
 	int foodX=5;
 	int foodY=7;
 	
+	/**
+	 * Constructor of a standard map with a wall on all sides.
+	 */
 	public Maze(){
 		mazeMatrix=new char[rijen][kolommen];
 		for(int i=0;i<rijen;i++){
@@ -29,6 +37,9 @@ public class Maze {
 		}
 	}
 	
+	/**
+	 * Prints the maze and snakes to the console
+	 */
 	public void draw(){
 		char [][] temporaryMatrix = new char[mazeMatrix.length][];
 		for(int i = 0; i < mazeMatrix.length; i++){
@@ -47,42 +58,60 @@ public class Maze {
 		}
 	}
 	
+	/**
+	 * Creates a reference to the snake.
+	 * 
+	 * @param snake
+	 */
 	public void addSnake(Snake snake){
 		this.snake=snake;
 	}
 	
-	public void removeFood(){
-		foodX=0;
-		foodY=0;
-	}
-	
+	/**
+	 * Generate food in a random location on the map (not in the wall or snake)
+	 */
 	public void generateFood(){
-		boolean collision=true;
-		BodyPart[] bodypartarray=snake.getbodypartlist().getElements(BodyPart[].class);
-		while(collision){
-			int x= (int) Math.random()*rijen;
-			int y= (int) Math.random()*kolommen;
-			if(mazeMatrix[x][y]==' '){
-				collision=false;
-				/*for(BodyPart p:bodypartarray){
-					if(x==p.getX()&&y==p.getY()){
-						collision=true;
-					}
-				}*/
-			}
+		do {
+			foodX= (int) (Math.random()*rijen);
+			foodY= (int) (Math.random()*kolommen);
+			} while (collision(foodX,foodY));
 		}
-	}
 	
+	/**
+	 * 
+	 * @return The x coordinate of the food
+	 */
 	public int getFoodX(){
 		return foodX;
 	}
 	
+	/**
+	 * 
+	 * @return The y coordinate of the food
+	 */
 	public int getFoodY(){
 		return foodY;
 	}
 	
+	/**
+	 * Checks if there is a collision with a snake or the wall
+	 * 
+	 * @param x The x coordinate to check
+	 * @param y The y coordinate to check
+	 * @return true if collision
+	 */
 	public boolean collision(int x,int y){
-		return mazeMatrix[x][y]=='#';
+		boolean collision=true;
+		BodyPart[] bodypartarray=snake.getbodypartlist().getElements(BodyPart[].class);
+		if(mazeMatrix[x][y]==' '){
+			collision=false;
+			for(BodyPart p:bodypartarray){
+				if(x==p.getX()&&y==p.getY()){
+					collision=true;
+				}
+			}
+		}
+		return collision;
 	}
 }
 
