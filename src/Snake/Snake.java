@@ -9,6 +9,7 @@ package Snake;
 public class Snake{
 private LinkedList<BodyPart> bodypartlist=new LinkedList<BodyPart>();
 private Maze maze;
+private boolean gameOver=false;
 
 	/**
 	 * Constructor for a new snake in the middle of the map.
@@ -16,8 +17,19 @@ private Maze maze;
 	 * @param maze A reference to the maze the snake will be part of.
 	 */
 	public Snake(Maze maze){
+		this(maze,7,7);
+	}
+	
+	/**
+	 * Constructor for a snake with custom coordinates
+	 * 
+	 * @param maze A reference to the maze the snake will be part of.
+	 * @param x The x coordinate of the spawn location
+	 * @param y The y coordinate of the spawn location
+	 */
+	public Snake(Maze maze, int x, int y){
 		this.maze=maze;
-		BodyPart start=new BodyPart(7,7);
+		BodyPart start=new BodyPart(x,y);
 		bodypartlist.prepend(start);
 	}
 	
@@ -55,6 +67,7 @@ private Maze maze;
 		}
 		if(maze.collision(newX,newY)){
 			System.out.println("Game Over");
+			gameOver=true;
 		}else{
 		first.setX(newX);
 		first.setY(newY);
@@ -91,6 +104,10 @@ private Maze maze;
 		move(4);
 	}
 	
+	public boolean isGameOver(){
+		return gameOver;
+	}
+	
 	/**
 	 * 
 	 * @return The LinkedList that contains the BodyParts of the snake.
@@ -98,10 +115,12 @@ private Maze maze;
 	public LinkedList<BodyPart> getbodypartlist(){
 		return bodypartlist;
 	}
+	
+	/**
+	 * 
+	 * @return The first BodyPart of the snake
+	 */
+	public BodyPart getFirst(){
+		return bodypartlist.first();
+	}
 }
-
-/*
-Sources used:
-http://stackoverflow.com/questions/4522090/how-can-i-detect-arrow-keys-in-java
-
-*/

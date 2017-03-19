@@ -94,6 +94,24 @@ public class Maze {
 	}
 	
 	/**
+	 * Sets the x coordinate of the food
+	 * 
+	 * @param fooX
+	 */
+	public void setFoodX(int foodX){
+		this.foodX=foodX;
+	}
+	
+	/**
+	 * Sets the Y coordinate of the food
+	 * 
+	 * @param foodY
+	 */
+	public void setFoodY(int foodY){
+		this.foodY=foodY;
+	}
+	
+	/**
 	 * Checks if there is a collision with a snake or the wall
 	 * 
 	 * @param x The x coordinate to check
