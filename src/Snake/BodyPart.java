@@ -1,8 +1,10 @@
 package Snake;
 
+//Een testklasse leek hier niet nuttig gezien deze klasse enkel set en get methoden bevat.
+
 /**
  * Describes a part of the snake's body, with 2 coordinates.
- * @author klaas
+ * @author Klaas Govaerts
  *
  */
 public class BodyPart{

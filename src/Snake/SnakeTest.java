@@ -6,25 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.lang.Object;
 
-public class SnakeTest {
-
-	Maze maze;
-	Snake snake;
-	BodyPart first;
-	LinkedList<BodyPart> bodypartlist;
-
-	
-	@Before
-	public void setUp() throws Exception {
-		maze=new Maze();
-		snake=new Snake(maze,13,13);
-		maze.addSnake(snake);
-		first=snake.getbodypartlist().first();
-		bodypartlist=snake.getbodypartlist();
-		maze.setFoodX(12);
-		maze.setFoodY(13);
-	}
-
+public class SnakeTest extends GenericTest{
 	@Test
 	public void testSnake() {
 		assertEquals(first.getX(),13);

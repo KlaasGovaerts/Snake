@@ -11,10 +11,10 @@ import java.lang.Math;
 public class Maze {
 	private char[][] mazeMatrix;
 	private Snake snake;
-	int rijen=15;
-	int kolommen=15;
-	int foodX=5;
-	int foodY=7;
+	private int rijen=15;
+	private int kolommen=15;
+	private int foodX=5;
+	private int foodY=7;
 	
 	/**
 	 * Constructor of a standard map with a wall on all sides.
@@ -38,9 +38,11 @@ public class Maze {
 	}
 	
 	/**
-	 * Prints the maze and snakes to the console
+	 *
+	 * @return string with the state of the board
 	 */
-	public void draw(){
+	public String toString(){
+		String output="";
 		char [][] temporaryMatrix = new char[mazeMatrix.length][];
 		for(int i = 0; i < mazeMatrix.length; i++){
 			temporaryMatrix[i] = mazeMatrix[i].clone();			
@@ -52,11 +54,20 @@ public class Maze {
 		temporaryMatrix[foodX][foodY]='+';
 		for(int i=0;i<rijen;i++){
 			for(int j=0;j<kolommen;j++){
-				System.out.print(temporaryMatrix[i][j]);
+				output+=temporaryMatrix[i][j];
 			}
-			System.out.println("");
+			output+="\n";
 		}
+		return output;
 	}
+
+	/**
+	 * Prints the maze and snakes to the console
+	 */
+	public void draw(){
+		System.out.print(toString());
+	}
+	
 	
 	/**
 	 * Creates a reference to the snake.
@@ -96,7 +107,7 @@ public class Maze {
 	/**
 	 * Sets the x coordinate of the food
 	 * 
-	 * @param fooX
+	 * @param foodX
 	 */
 	public void setFoodX(int foodX){
 		this.foodX=foodX;
@@ -112,7 +123,7 @@ public class Maze {
 	}
 	
 	/**
-	 * Checks if there is a collision with a snake or the wall
+	 * Checks if there is a collision with the snake or the wall
 	 * 
 	 * @param x The x coordinate to check
 	 * @param y The y coordinate to check

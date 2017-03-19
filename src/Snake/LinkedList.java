@@ -4,8 +4,8 @@ import java.lang.reflect.Array;
 
 /**
  * 
- * @author Piet Cordemans & Klaas Govaerts
- * 
+ * @author Piet Cordemans
+ * @author Klaas Govaerts
  * Singly linked list
  *
  * @param <T> type or the parameter
